@@ -1,9 +1,11 @@
+from Edge import Edge
+
 class Graph:
 
     def __init__(self):
 
         self.vertices = []
-        self.edges = [[]]
+        self.edges = []
 
 
     def insert_vertex(self, vertex):
@@ -14,11 +16,24 @@ class Graph:
         self.vertices.append(vertex)
             
 
-    def define_edge(self, vertex_one, vertex_two):
+    def define_edge(self, vertex_one, vertex_two, weight=0):
         
-        edge = [vertex_one, vertex_two]
+        edge = Edge(vertex_one, vertex_two, weight)
         if edge not in self.edges:
-            self.edges.append(edge)
             vertex_one.adjacency_list.append(vertex_two)
             vertex_two.adjacency_list.append(vertex_one)
+            self.edges.append(edge)
+
+        else:
+            self.edges[self.edges.index(edge)].w = weight
     
+
+    def add_edge(self, edge):
+
+        if edge not in self.edges:
+            edge.u.adjacency_list.append(edge.v)
+            edge.v.adjacency_list.append(edge.u)
+            self.edges.append(edge)
+        else:
+            self.edges[self.edges.index(edge)].w = edge.weight
+
