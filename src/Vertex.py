@@ -10,3 +10,18 @@ class Vertex:
         self.parent = parent
         self.adjacency_list = []
 
+
+    def __ge__(self, v):
+        
+        return True if self.distance > v.distance else False
+
+
+    def __lt__(self, v):
+
+        return True if self.distance < v.distance else False
+
+
+    def __eq__(self, v):
+        
+        return True if self.id == v.id else False
+
