@@ -13,3 +13,9 @@ class Edge:
             return True
         return False
 
+
+    @staticmethod
+    def weight(edge):
+
+      return edge.w
+      
