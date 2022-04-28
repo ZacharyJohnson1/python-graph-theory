@@ -1,5 +1,4 @@
 from Vertex import Vertex
-from Edge import Edge
 from Graph import Graph
 import math
 
@@ -7,13 +6,13 @@ def bfs(G, v):
     
     for u in G.vertices:
         if u is not v:
-            u.color = 'WHITE'
-            u.distance = math.inf
-            u.parent = None
+            u.set_color('WHITE')
+            u.set_distance(math.inf)
+            u.set_parent(None)
     
-    v.color = 'GRAY'
-    v.distance = 0
-    v.parent = None
+    v.set_color('GRAY')
+    v.set_distance(0)
+    v.set_parent(None)
 
     q = []
     q.append(v)
@@ -23,13 +22,13 @@ def bfs(G, v):
         u = q.pop(0)
         index = G.vertices.index(u)
         for vertex in G.vertices[index].adjacency_list:
-            if vertex.color == 'WHITE':
-                vertex.color = 'GRAY'
-                vertex.distance = u.distance + 1
-                vertex.parent = u
-                print(f'id: {vertex.id}, distance: {vertex.distance}, parent: {vertex.parent.id}')
+            if vertex.get_color() == 'WHITE':
+                vertex.set_color('GRAY')
+                vertex.set_distance(u.get_distance() + 1)
+                vertex.set_parent(u)
                 q.append(vertex)
-        u.color = 'BLACK'
+        u.set_color('BLACK')
+        print(f'id: {u.get_id()}, distance: {u.get_distance()}')
 
 
 if __name__ == '__main__':
@@ -51,9 +50,12 @@ if __name__ == '__main__':
     G.insert_vertex(z)
 
     G.define_edge(u, v)
-    G.define_edge(w, x)
+    #G.define_edge(w, x)
+    G.define_edge(z, w)
     G.define_edge(x, y)
     G.define_edge(y, z)
+    G.define_edge(u, x)
+    G.define_edge(v, w)
     # for v in G.vertices: print(v.id)
     # for e in G.edges:
     #     for v in e:
