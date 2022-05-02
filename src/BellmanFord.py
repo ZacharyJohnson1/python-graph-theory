@@ -8,11 +8,11 @@ class BellmanFord:
 
         initialize_single_source(G,s)
         
-        for _ in range(1, len(G.vertices) - 1):
-            for e in G.edges:
-                relax(e.u, e.v, w)
+        for _ in range(0, len(G.vertices) - 1):
+            for edge in G.edges:
+                relax(edge.u, edge.v, w(edge))
         
-        for e in G.edges:
-            if e.v.distance > e.u.distance + w:
+        for edge in G.edges:
+            if edge.v.get_distance() > edge.u.get_distance() + w(edge):
                 return False
         return True
