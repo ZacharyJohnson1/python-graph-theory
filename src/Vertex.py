@@ -25,6 +25,7 @@ class Vertex:
 
     def __eq__(self, v):
         
+        if v == None: return False
         return True if self.id == v.id else False
 
     
