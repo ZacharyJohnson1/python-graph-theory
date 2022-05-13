@@ -14,6 +14,16 @@ class Edge:
         return False
 
 
+    def __ge__(self, v):
+        
+        return True if self.w > v.w else False
+
+
+    def __lt__(self, v):
+
+        return True if self.w < v.w else False
+
+
     @staticmethod
     def weight(edge):
 
