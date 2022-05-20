@@ -50,3 +50,9 @@ class Graph:
         else:
             self.edges[self.edges.index(edge)].w = edge.weight
 
+
+    @staticmethod
+    def is_acyclic(self, G):
+        
+        pass
+    
